@@ -1,0 +1,952 @@
+Delivered-To: katilley10@gmail.com
+Received: by 2002:ab0:667:0:0:0:0:0 with SMTP id f94csp417971uaf;
+        Tue, 28 Jul 2020 05:27:36 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw+3B6ysfZqulypaZSDzENr6aaFQEPVECSsD2NIr1PzMv2N8YUXcliNe9RRZKK2iiR1+I6J
+X-Received: by 2002:ad4:43c1:: with SMTP id o1mr26843830qvs.61.1595939256029;
+        Tue, 28 Jul 2020 05:27:36 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1595939256; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=E4t9IGOs0OoelH6EKkAIN7armc08tyKHdtGyw1a1xGbAGE9beiYsItE0VoR2jQHxSD
+         KxXZPu8gHAmpHxViNSAY1ivVGEtnBaGcOTE6QVszbsmyL+/gVNtLgZ6Gi3p8f98fIq/V
+         alOR5YzVnMmyZnKBspVb6VchiuqXXwyfm+KXh1r0yR6yeGEUDv952nZSq4lPYFsFUC5a
+         ekqBahfkr30Ix2vCuGnvk1qKPlYkCKUyFeor1Vtl7o6wWCLC8rOzO+gKZ/fHSBeYWT8C
+         fZ+F5ijRVEcpCryK1EcZSXulYpX+4eSfMDWD+ryc8PwKUQqNPPWOZJvUyB8VRxgB9KFT
+         unhg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:content-language:accept-language:message-id:date
+         :thread-index:thread-topic:subject:to:from:dkim-signature;
+        bh=u7stMsNmNwF4NBCxnSOgIl6igoBv5BwTiaIitVhuj1E=;
+        b=09Vt7NoRFThqtJD8OrEpIb+7888oMHZEnSC8cCyfOmjjtESEY4+qzsmuj2dasJTqel
+         zeryt7r3VF+zIdm9szrjlS+iDf4szKNHAe5FcnjIs9YRLG1gW/2RD9/u+WgMKYlO1akN
+         JH/KDibAnnTjIK6JeAdbHUYIDrg2gup3oHe0ZfWItv/EUq0wApEy4sAFEt3a/8WneBHb
+         gxiXIh0D/MTFcA+g8f+iJ8zuqYDRIHPSbx4CCXoMSoz2+C5JpZRkdkq3KRGMeceP+JMf
+         K742IW6Yoxv+kgRuZ3QcjSuFbyj4wNDHhKpPy+OL93gYvB9/PLE+3COo8sWinmSP2OpY
+         0gwA==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@NETORGFT3721144.onmicrosoft.com header.s=selector2-NETORGFT3721144-onmicrosoft-com header.b=F+YfD+g0;
+       arc=pass (i=1 spf=pass spfdomain=campro-usa.com dkim=pass dkdomain=campro-usa.com dmarc=pass fromdomain=campro-usa.com);
+       spf=neutral (google.com: 40.107.92.85 is neither permitted nor denied by best guess record for domain of dave@campro-usa.com) smtp.mailfrom=dave@campro-usa.com
+Return-Path: <dave@campro-usa.com>
+Received: from NAM10-BN7-obe.outbound.protection.outlook.com (mail-bn7nam10on2085.outbound.protection.outlook.com. [40.107.92.85])
+        by mx.google.com with ESMTPS id v15si7161950qvm.124.2020.07.28.05.27.35
+        for <katilley10@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 28 Jul 2020 05:27:35 -0700 (PDT)
+Received-SPF: neutral (google.com: 40.107.92.85 is neither permitted nor denied by best guess record for domain of dave@campro-usa.com) client-ip=40.107.92.85;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@NETORGFT3721144.onmicrosoft.com header.s=selector2-NETORGFT3721144-onmicrosoft-com header.b=F+YfD+g0;
+       arc=pass (i=1 spf=pass spfdomain=campro-usa.com dkim=pass dkdomain=campro-usa.com dmarc=pass fromdomain=campro-usa.com);
+       spf=neutral (google.com: 40.107.92.85 is neither permitted nor denied by best guess record for domain of dave@campro-usa.com) smtp.mailfrom=dave@campro-usa.com
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Am6acQ1DEuGHmMYTAye4FLxkMsPrEx8eJ8K/GjpqHSKE0YLAiXxBc8cUh5EoUtjrMhh63FjP6kBYG59HXXXZ6AfGoj/ASiqHBIFJ6hpzGbMh0AipmBoYRQbVDukiNuTZ3fgv/qDDH5nH+cOBZYz88oN49gRTnNA8N0GVL7T/EXoa8xhRptWr2B2zULs7uHxTZjfffXfJjwppLkDsw6v8YEK0OKbYu0LYXkj7SHf1MYdk5uxn75c1x1M39c9h4wFVrMZ37W7nDOuXLnecW2z9RZQjGoVx46isGUyAI5aeyxWzstncLaFsHxPV/YpwhAYVFShdPyyvUXeO7cEPNHrkSA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=u7stMsNmNwF4NBCxnSOgIl6igoBv5BwTiaIitVhuj1E=;
+ b=jpcfLphsLpULT6Xbiu3wetkicf1XIfiHOKUA32olTUQs5XMljBO9vos0NsWK5Q22DkfuYlAlXHiSOanKr9WbGHuB93X5HyknT3OhpD0fr+oDs/+KoMjH7p/uuo8WMTwnKY8Mn4Bluvafo0Ms5RXZ7opK5dY/nUh1klpgKvCQlMw6I2WXgkwFZO4KzRMaJyYvJ80segPHQ68g2WrbQrz3klySyItjY+Uzda8XEEx8nmrtDVqPthoSRY3Ap2fe+Tc0rkBKKCCgKO8hxEVOIDG/qsDd3tjv1tOBhgLfJq3xqm9aiKrAADBXUxOFYBMxJc2SnJy1ISNJFIKfwrNfzZYfcw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=campro-usa.com; dmarc=pass action=none
+ header.from=campro-usa.com; dkim=pass header.d=campro-usa.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=NETORGFT3721144.onmicrosoft.com;
+ s=selector2-NETORGFT3721144-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=u7stMsNmNwF4NBCxnSOgIl6igoBv5BwTiaIitVhuj1E=;
+ b=F+YfD+g0uWndCU1A3C7k0NWFMs9xJXaKDlgXLG+p0rzlkVdv/8i/+3rjSiaGG+EjNnRiMCBMDmPAyOKQ0s8Ai+sC5Bw6EZPDIRosCsQj340PdMa1uh+/QH/PYsoipzcyVFmXq/FsJC1OZGsYtWeZLbPhrNDnvAJRa/Ol7dqiidw=
+Received: from BLAPR15MB3746.namprd15.prod.outlook.com (2603:10b6:208:27e::12)
+ by BLAPR15MB4002.namprd15.prod.outlook.com (2603:10b6:208:27e::8) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3216.20; Tue, 28 Jul
+ 2020 12:27:32 +0000
+Received: from BLAPR15MB3746.namprd15.prod.outlook.com
+ ([fe80::f949:4bfe:367d:f82c]) by BLAPR15MB3746.namprd15.prod.outlook.com
+ ([fe80::f949:4bfe:367d:f82c%3]) with mapi id 15.20.3216.034; Tue, 28 Jul 2020
+ 12:27:32 +0000
+From: Dave Tilley <dave@campro-usa.com>
+To: "katilley10@gmail.com" <katilley10@gmail.com>
+Subject: Fwd: More Price Cuts!! NL2500 and NL3000
+Thread-Topic: More Price Cuts!! NL2500 and NL3000
+Thread-Index: AQHWZNpzoaJ2skc62Eyw0CpccncV+w==
+Date: Tue, 28 Jul 2020 12:27:32 +0000
+Message-ID:
+ <BLAPR15MB374630938CBA9EB9B9DEBDAFEB730@BLAPR15MB3746.namprd15.prod.outlook.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach:
+X-MS-TNEF-Correlator:
+authentication-results: gmail.com; dkim=none (message not signed)
+ header.d=none;gmail.com; dmarc=none action=none header.from=campro-usa.com;
+x-originating-ip: [73.175.197.79]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: bb24fcb0-5dd3-4757-6460-08d832f19a31
+x-ms-traffictypediagnostic: BLAPR15MB4002:
+x-microsoft-antispam-prvs:
+ <BLAPR15MB4002076F17814FFBA119D3DEEB730@BLAPR15MB4002.namprd15.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:635;
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info:
+ vXDATeb4DphRBxJQlPIeyoCkHytZkC2umMW6Jh5ury3U2VAgyaIxG1pP3Axmeuap8AAwIV/snZIwhKnMdARfb399uE3B34txW5UFoXYbVjYuxp0vrcbsS9jbYXlnTlwI0+5He61g02EsehKYgZHKB7LGPcOHhviT5epHfr+kkZ4p9nuxZWW+zF3gTRsk6sM4n7oW6FOzWqLaTVy3ShY4fTnKRYtqxLMQu81NxzucIfUazOylvynbHOq6FuhCGnSIxCRce1c/TeqgOmPZuMN67YIujb7M6lzAxXFG8ltJ2VSmFhqLWXHA4hINRwDRbetqc/ZYrMBtK0yZ7hd4VwLEz368Ofg6wPp6N2uQX3T0rfdfON3kE++J1XG93zrqx1imCTdTjrv4c6Uw49HW7rUtq0A+8RFZ7qWGx5QvWFufcksCicJsdvRbo6ndj6nzXjczSZXxHcX6l51MKjaMaVUAS58RGRdFJ6T2tzrt0C7xr+Q9WSwqa66tWVfrREk9x8Z44/YAov2nHgsNTt5q2HgIAA==
+x-forefront-antispam-report:
+ CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:BLAPR15MB3746.namprd15.prod.outlook.com;PTR:;CAT:NONE;SFTY:;SFS:(346002)(136003)(376002)(39830400003)(366004)(396003)(83380400001)(166002)(86362001)(4744005)(53546011)(64756008)(66476007)(6506007)(66556008)(19627405001)(52536014)(66946007)(66446008)(7696005)(76116006)(5660300002)(33656002)(316002)(55016002)(9686003)(508600001)(71200400001)(186003)(26005)(8936002)(8676002)(2906002)(45080400002)(6916009)(400484006);DIR:OUT;SFP:1101;
+x-ms-exchange-antispam-messagedata:
+ /r0EnoWbm7p8bGPwodsqoEhXTQCAeQep4CGOGrUrjUztdKfe/NcxVagECBZ6VWSHagsIJRbpiLt3OozpFxweDAZ3J0gartnupc17Hhxw5yVpj4xN9l07QlsOrjRkvcDBm69TpmClwQmVdoC1NEq+2apf6XXsVwsOBDLud9C3sNuKDJ20bOIZFuwLillTmPgEqBlIWpXcVNIWZbPM1R8tcQq8RWIGUxAMsaHd6SnSWrb25fEx1vrsbttiHRHapKTSBcpx3cObBRSrl1wBBgd2mtngekGlTWV0Fe0z2UocW4JhKsorTuaNDuUj5FUqwJ6cKi1wiCQUK/eOxAzK4y4b1ag3iGuu1ovEqcO/oVAJQs/AVyNgZYCHyrvwWPHPn066oVNEOze89dWidtqHs85MmgodQv1ZrwEE1lcY2L9FuOdOGYz/KHNI/zG8K+ojypffVy0xpVpLBz6YRhSCerfBTU0wER9S1MJmEsEe9Jr1k04=
+x-ms-exchange-transport-forked: True
+Content-Type: multipart/alternative;
+	boundary="_000_BLAPR15MB374630938CBA9EB9B9DEBDAFEB730BLAPR15MB3746namp_"
+MIME-Version: 1.0
+X-OriginatorOrg: campro-usa.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BLAPR15MB3746.namprd15.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: bb24fcb0-5dd3-4757-6460-08d832f19a31
+X-MS-Exchange-CrossTenant-originalarrivaltime: 28 Jul 2020 12:27:32.7504
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 54851227-b4f9-449d-8822-a3adb877a8c5
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: IILliuZEd9TYnzI1Gcn3xrTNQ6npZSFynAUpy14Pa7a0Okdz55zdYuBRTwC5Pq16fz49Y40PHMQsfqcwK9hABA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BLAPR15MB4002
+
+--_000_BLAPR15MB374630938CBA9EB9B9DEBDAFEB730BLAPR15MB3746namp_
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+He's a sample of what real companies do.....
+
+Dave Tilley
+Sent on Samsung Galaxy
+
+________________________________
+From: Smart Machine Tool <marketing@dynamicintl.com>
+Sent: Tuesday, July 28, 2020, 7:01 AM
+To: dat919@hotmail.com
+Subject: More Price Cuts!! NL2500 and NL3000
+
+Visit Our Website for More!
+[X]
+
+[https://files.constantcontact.com/87b1c2a4701/9dd391f2-3df7-4d8f-98a4-5d42=
+6d21f099.png] <https://eur03.safelinks.protection.outlook.com/?url=3Dhttp%3=
+A%2F%2Fr20.rs6.net%2Ftn.jsp%3Ff%3D001WaDmQgqZJ0oh-o6tTzFFe3ie2oYs7nY2bmBCt1=
+mKZRbVCqAd2U8sfUswjGq3XhKVR3w2qRdh1ItSFSnSY0AhGpN2OQi2t5kRfk0mD8XKiNEwkJR3f=
+MNINauqeDqDF90sOX3mNZwnpR8J8MNiZAvU1FoBl6DUBRivHaxzMij1jsoFqZwLylAbbTcuCzte=
+VBgfW8w6JMmOvRw%3D%26c%3D97IMDX9NmHOHR0SA-pKsAiK05__lEnJzD7CK4vHc517SRWYBtq=
+6nxA%3D%3D%26ch%3D3Xb8cvGswX2bYiKoBUQKGw1x3EpfEwahDL2L_8mlfVkoElcPHVF1KA%3D=
+%3D&data=3D02%7C01%7C%7Cc3a879a3d2394bc1f1e108d832e5a275%7C84df9e7fe9f640af=
+b435aaaaaaaaaaaa%7C1%7C0%7C637315309132652502&sdata=3DeefQlCKkgkjDWHS1c606J=
+cq3Loh3xjV4WycBoYWPjoo%3D&reserved=3D0>
+
+[https://files.constantcontact.com/87b1c2a4701/f10d9a7e-7578-40ef-a405-a458=
+c22a5678.png] <https://eur03.safelinks.protection.outlook.com/?url=3Dhttp%3=
+A%2F%2Fr20.rs6.net%2Ftn.jsp%3Ff%3D001WaDmQgqZJ0oh-o6tTzFFe3ie2oYs7nY2bmBCt1=
+mKZRbVCqAd2U8sfaRVySicTjCOcWmbOuCkWmx2DXDojI9cq0Td9PQhUOowBeLsdeZJUc5u6_cPf=
+sR2oojQt5w6LEPosRq0edleK4gN4klV_rTG_702BNBoNmBvPAeLq2YLvRuFbj_C6ApTuktbJvmT=
+4CWK_EudA8Lk8tc%3D%26c%3D97IMDX9NmHOHR0SA-pKsAiK05__lEnJzD7CK4vHc517SRWYBtq=
+6nxA%3D%3D%26ch%3D3Xb8cvGswX2bYiKoBUQKGw1x3EpfEwahDL2L_8mlfVkoElcPHVF1KA%3D=
+%3D&data=3D02%7C01%7C%7Cc3a879a3d2394bc1f1e108d832e5a275%7C84df9e7fe9f640af=
+b435aaaaaaaaaaaa%7C1%7C0%7C637315309132667475&sdata=3D3JRXDmHpUjNtcKEi27%2B=
+woivlba0pwLgtVaiqsJ7Pu2c%3D&reserved=3D0>
+Imported by Dynamic International
+For more information, contact us today!
+Phone: (855) 976-4446
+Email: marketing@dynamicintl.com
+Website: www.SmartMachineTool.com<https://eur03.safelinks.protection.outloo=
+k.com/?url=3Dhttp%3A%2F%2Fr20.rs6.net%2Ftn.jsp%3Ff%3D001WaDmQgqZJ0oh-o6tTzF=
+Fe3ie2oYs7nY2bmBCt1mKZRbVCqAd2U8sfZK0fHjOoNDQ-GKsWoMa4PdWwLueCjbqDGlbEBq4UM=
+_hqu8C5cE8vZq2Xbo1S8wUxzSF_XviKd7HHTGHi7PMN80l5j0LNHP6Ubpk6Vr4awl_%26c%3D97=
+IMDX9NmHOHR0SA-pKsAiK05__lEnJzD7CK4vHc517SRWYBtq6nxA%3D%3D%26ch%3D3Xb8cvGsw=
+X2bYiKoBUQKGw1x3EpfEwahDL2L_8mlfVkoElcPHVF1KA%3D%3D&data=3D02%7C01%7C%7Cc3a=
+879a3d2394bc1f1e108d832e5a275%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C=
+637315309132677455&sdata=3DxwhqEgFHMfnY%2FYgTeJeQluwdvLIm1pXwJZa1%2BidjpH4%=
+3D&reserved=3D0>
+Dynamic | N25 W23287 Paul Road, Pewaukee, WI 53072
+Unsubscribe dat919@hotmail.com<https://eur03.safelinks.protection.outlook.c=
+om/?url=3Dhttps%3A%2F%2Fvisitor.constantcontact.com%2Fdo%3Fp%3Dun%26m%3D001=
+rhPfNrjF8AflgW_JC_uYwA%253D%26ch%3De7a2d746-bad3-11ea-aa0b-782bcb740129%26c=
+a%3Dd342178b-b6de-4096-9802-4c89bce88c06&data=3D02%7C01%7C%7Cc3a879a3d2394b=
+c1f1e108d832e5a275%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C63731530913=
+2682445&sdata=3Dch7ZNRUkhZLXOT0ACQ0XoQR%2F%2BTMb51ohcsPZ7tCu544%3D&reserved=
+=3D0>
+Update Profile<https://eur03.safelinks.protection.outlook.com/?url=3Dhttps%=
+3A%2F%2Fvisitor.constantcontact.com%2Fdo%3Fp%3Doo%26m%3D001rhPfNrjF8AflgW_J=
+C_uYwA%253D%26ch%3De7a2d746-bad3-11ea-aa0b-782bcb740129%26ca%3Dd342178b-b6d=
+e-4096-9802-4c89bce88c06&data=3D02%7C01%7C%7Cc3a879a3d2394bc1f1e108d832e5a2=
+75%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C637315309132692429&sdata=3D=
+bYLWfFqPTC0x7sxkpQTawZu%2Fv3gUh5j4BwZmz3Rl6To%3D&reserved=3D0> | About our =
+service provider<https://eur03.safelinks.protection.outlook.com/?url=3Dhttp=
+%3A%2F%2Fwww.constantcontact.com%2Flegal%2Fservice-provider%3Fcc%3Dabout-se=
+rvice-provider&data=3D02%7C01%7C%7Cc3a879a3d2394bc1f1e108d832e5a275%7C84df9=
+e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C637315309132702415&sdata=3DiNzwQKV9os=
+GFrhKgm46gxylO5CefvFPse9usV0hNw98%3D&reserved=3D0>
+Sent by marketing@dynamicintl.com<mailto:marketing@dynamicintl.com> powered=
+ by
+[Trusted Email from Constant Contact - Try it FREE today.] <https://eur03.s=
+afelinks.protection.outlook.com/?url=3Dhttp%3A%2F%2Fwww.constantcontact.com=
+%2Findex.jsp%3Fcc%3Dnge%26rmc%3DVF19_3GE&data=3D02%7C01%7C%7Cc3a879a3d2394b=
+c1f1e108d832e5a275%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C63731530913=
+2712393&sdata=3DDjSYlcsiyMeD2U7ZHx7lvUB%2BsFMI3Z4Xprqw2Pibdfw%3D&reserved=
+=3D0>
+Try email marketing for free today!<https://eur03.safelinks.protection.outl=
+ook.com/?url=3Dhttp%3A%2F%2Fwww.constantcontact.com%2Findex.jsp%3Fcc%3Dnge%=
+26rmc%3DVF19_3GE&data=3D02%7C01%7C%7Cc3a879a3d2394bc1f1e108d832e5a275%7C84d=
+f9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C637315309132722377&sdata=3D62dHQB6o=
+7nOH8tCBmGQvcWBDIgB4lhkr5FrZQ88IwZs%3D&reserved=3D0>
+
+
+--_000_BLAPR15MB374630938CBA9EB9B9DEBDAFEB730BLAPR15MB3746namp_
+Content-Type: text/html; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+<html>
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dus-ascii"=
+>
+</head>
+<body>
+<div style=3D"color: rgb(33, 33, 33); background-color: rgb(255, 255, 255);=
+ text-align: left;" dir=3D"auto">
+He's a sample of what real companies do.....</div>
+<div id=3D"ms-outlook-mobile-signature" dir=3D"auto" style=3D"text-align: l=
+eft;">
+<div><br>
+</div>
+Dave Tilley<br>
+Sent on Samsung Galaxy</div>
+<div id=3D"id-d439c8ea-e3b4-482b-82f7-c4831947b184" class=3D"ms-outlook-mob=
+ile-reference-message">
+<div style=3D"font-family: sans-serif; font-size: 12pt; color: rgb(0, 0, 0)=
+;"><br>
+</div>
+<hr style=3D"display:inline-block;width:98%" tabindex=3D"-1">
+<div id=3D"divRplyFwdMsg"><strong>From:</strong> Smart Machine Tool &lt;mar=
+keting@dynamicintl.com&gt;<br>
+<strong>Sent:</strong> Tuesday, July 28, 2020, 7:01 AM<br>
+<strong>To:</strong> dat919@hotmail.com<br>
+<strong>Subject:</strong> More Price Cuts!! NL2500 and NL3000<br>
+</div>
+<br>
+<meta content=3D"text/html; charset=3Dutf-8">
+<meta content=3D"width=3Ddevice-width, initial-scale=3D1.0" name=3D"viewpor=
+t">
+<meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=3D1,=
+ maximum-scale=3D1">
+<style id=3D"template-styles-head">.footer-main-width { max-width: 630px; w=
+idth: 630px !important; }=0A=
+table { border-collapse: collapse; table-layout: fixed; }=0A=
+.bgimage { table-layout: auto; }=0A=
+.preheader-container { color: transparent; display: none; font-size: 1px; l=
+ine-height: 1px; max-height: 0px; max-width: 0px; opacity: 0; overflow: hid=
+den; }=0A=
+.editor-text p { margin: 0px; padding: 0px; }=0A=
+.editor-text ul, .editor-text ol { padding: 0px; margin: 0px 0px 0px 40px; =
+}=0A=
+.editor-text li { padding: 0px; margin: 0px; line-height: 1.2; }=0A=
+img { }=0A=
+a { text-decoration: underline; }=0A=
+a[x-apple-data-detectors] { text-decoration: underline !important; font-siz=
+e: inherit !important; font-family: inherit !important; font-weight: inheri=
+t !important; line-height: inherit !important; color: inherit !important; }=
+=0A=
+.editor-text, .MainTextFullWidth { }=0A=
+u + .body .template-#id-d439c8ea-e3b4-482b-82f7-c4831947b184 { width: 630px=
+; }=0A=
+@media only screen and (max-width: 480px) {=0A=
+  u + .body .template-body { width: 100% !important; }=0A=
+}=0A=
+[office365] button, [office365] .divider-base div, [office365] .spacer-base=
+ div, [office365] .editor-image div { display: block !important; }</style><=
+style>=0A=
+<!--=0A=
+@media only screen and (max-width:480px) {=0A=
+table=0A=
+	{border-collapse:collapse}=0A=
+.main-width=0A=
+	{width:100%!important}=0A=
+.mobile-hidden=0A=
+	{display:none!important}=0A=
+td.OneColumnMobile=0A=
+	{display:block!important}=0A=
+.OneColumnMobile=0A=
+	{width:100%!important}=0A=
+td.editor-col .editor-text=0A=
+	{padding-left:20px!important;=0A=
+	padding-right:20px!important}=0A=
+td.editor-col .editor-image.editor-image-hspace-on td=0A=
+	{padding-left:20px!important;=0A=
+	padding-right:20px!important}=0A=
+td.editor-col .editor-button-container=0A=
+	{padding-left:20px!important;=0A=
+	padding-right:20px!important}=0A=
+td.editor-col .editor-social td=0A=
+	{padding-left:20px!important;=0A=
+	padding-right:20px!important}=0A=
+td.editor-col .block-margin=0A=
+	{padding-left:20px!important;=0A=
+	padding-right:20px!important}=0A=
+td.editor-col td.block-margin .editor-text=0A=
+	{padding-left:0px!important;=0A=
+	padding-right:0px!important}=0A=
+td.editor-col td.block-margin .editor-image.editor-image-hspace-on td=0A=
+	{padding-left:0px!important;=0A=
+	padding-right:0px!important}=0A=
+td.editor-col td.block-margin .editor-button-container=0A=
+	{padding-left:0px!important;=0A=
+	padding-right:0px!important}=0A=
+td.editor-col td.block-margin .editor-social td=0A=
+	{padding-left:0px!important;=0A=
+	padding-right:0px!important}=0A=
+.editor-button td > table tr > td=0A=
+	{padding:0px 0px 0px 0px!important}=0A=
+.editor-button td > table tr > td td=0A=
+	{padding:9px 15px 10px 15px!important}=0A=
+.layout=0A=
+	{padding:15px 9px 15px 9px!important}=0A=
+.layout-container-border=0A=
+	{padding:1px 1px 1px 1px!important}=0A=
+.layout-container=0A=
+	{padding:0px 0px 0px 0px!important}=0A=
+.editor-image img=0A=
+	{width:auto!important;=0A=
+	margin-left:auto!important;=0A=
+	margin-right:auto!important}=0A=
+.editor-image .image-cell=0A=
+	{padding-bottom:15px!important}=0A=
+.editor-text=0A=
+	{font-size:16px!important}=0A=
+.preheader-text=0A=
+	{font-size:12px!important}=0A=
+.section-headline-text=0A=
+	{font-size:24px!important}=0A=
+.headline-text=0A=
+	{font-size:24px!important}=0A=
+.subheadline-text=0A=
+	{font-size:20px!important}=0A=
+.feature=0A=
+	{padding-top:0px!important;=0A=
+	padding-bottom:0px!important}=0A=
+.layout-outer=0A=
+	{padding:0px 20px!important}=0A=
+.feature-heading-text=0A=
+	{font-size:20px!important}=0A=
+.feature-text=0A=
+	{font-size:16px!important}=0A=
+.split.editor-col=0A=
+	{margin-top:0px!important}=0A=
+.split.editor-col ~ .split.editor-col=0A=
+	{margin-top:10px!important}=0A=
+.split-layout-margin=0A=
+	{padding:0px 20px!important}=0A=
+.article=0A=
+	{padding-top:0px!important;=0A=
+	padding-bottom:0px!important}=0A=
+.article-heading-text=0A=
+	{font-size:20px!important}=0A=
+.article-text=0A=
+	{font-size:16px!important}=0A=
+.social-container=0A=
+	{text-align:center!important}=0A=
+.social-text=0A=
+	{font-size:14px!important}=0A=
+.cpn-heading-text=0A=
+	{font-size:28px!important}=0A=
+.editor-cpn-heading-text=0A=
+	{font-size:28px!important}=0A=
+td.col-divided .editor-col=0A=
+	{border-right:0px solid #FF002A!important;=0A=
+	border-bottom:1px solid #FF002A!important}=0A=
+.col-divided=0A=
+	{padding:0 20px!important}=0A=
+td.col-divided .editor-col .editor-text=0A=
+	{padding-left:0px!important;=0A=
+	padding-right:0px!important}=0A=
+td.col-divided .editor-col .editor-image.editor-image-hspace-on td=0A=
+	{padding-left:0px!important;=0A=
+	padding-right:0px!important}=0A=
+td.col-divided .editor-col .editor-button-container=0A=
+	{padding-left:0px!important;=0A=
+	padding-right:0px!important}=0A=
+td.col-divided .editor-col .editor-social td=0A=
+	{padding-left:0px!important;=0A=
+	padding-right:0px!important}=0A=
+td.col-divided .editor-col .block-margin=0A=
+	{padding-left:0px!important;=0A=
+	padding-right:0px!important}=0A=
+.action-block .poll-answer=0A=
+	{width:100%!important;=0A=
+	display:block!important}=0A=
+.action-block .poll-button=0A=
+	{width:100%!important}=0A=
+div.MobileFooter=0A=
+	{font-size:11px!important}=0A=
+td.FooterMobile=0A=
+	{padding:0px 10px 0px 10px!important}=0A=
+td.MainCenter=0A=
+	{width:100%!important}=0A=
+table.MainSide=0A=
+	{display:none!important}=0A=
+img.MainSide=0A=
+	{display:none!important}=0A=
+td.MainSide=0A=
+	{display:none!important}=0A=
+.rsvp-button-inner=0A=
+	{padding:0px 0px 10px 0px!important}=0A=
+.rsvp-button-outer=0A=
+	{width:100%!important;=0A=
+	max-width:100%!important}=0A=
+.action-block .poll-answer=0A=
+	{width:100%!important;=0A=
+	display:block!important}=0A=
+.action-block .poll-button=0A=
+	{width:100%!important}=0A=
+div.MobileFooter=0A=
+	{font-size:11px!important}=0A=
+td.FooterMobile=0A=
+	{padding:0px 10px 0px 10px!important}=0A=
+td.MainCenter=0A=
+	{width:100%!important}=0A=
+table.MainSide=0A=
+	{display:none!important}=0A=
+img.MainSide=0A=
+	{display:none!important}=0A=
+td.MainSide=0A=
+	{display:none!important}=0A=
+.rsvp-button-inner=0A=
+	{padding:0px 0px 10px 0px!important}=0A=
+.rsvp-button-outer=0A=
+	{width:100%!important;=0A=
+	max-width:100%!important}=0A=
+.action-block .poll-answer=0A=
+	{width:100%!important;=0A=
+	display:block!important}=0A=
+.action-block .poll-button=0A=
+	{width:100%!important}=0A=
+div.MobileFooter=0A=
+	{font-size:11px!important}=0A=
+td.FooterMobile=0A=
+	{padding:0px 10px 0px 10px!important}=0A=
+td.MainCenter=0A=
+	{width:100%!important}=0A=
+table.MainSide=0A=
+	{display:none!important}=0A=
+img.MainSide=0A=
+	{display:none!important}=0A=
+td.MainSide=0A=
+	{display:none!important}=0A=
+.rsvp-button-inner=0A=
+	{padding:0px 0px 10px 0px!important}=0A=
+.rsvp-button-outer=0A=
+	{width:100%!important;=0A=
+	max-width:100%!important}=0A=
+.action-block .poll-answer=0A=
+	{width:100%!important;=0A=
+	display:block!important}=0A=
+.action-block .poll-button=0A=
+	{width:100%!important}=0A=
+div.MobileFooter=0A=
+	{font-size:11px!important}=0A=
+td.FooterMobile=0A=
+	{padding:0px 10px 0px 10px!important}=0A=
+td.MainCenter=0A=
+	{width:100%!important}=0A=
+table.MainSide=0A=
+	{display:none!important}=0A=
+img.MainSide=0A=
+	{display:none!important}=0A=
+td.MainSide=0A=
+	{display:none!important}=0A=
+.rsvp-button-inner=0A=
+	{padding:0px 0px 10px 0px!important}=0A=
+.rsvp-button-outer=0A=
+	{width:100%!important;=0A=
+	max-width:100%!important}=0A=
+.footer-main-width=0A=
+	{width:100%!important}=0A=
+.footer-mobile-hidden=0A=
+	{display:none!important}=0A=
+.footer-mobile-hidden=0A=
+	{display:none!important}=0A=
+.footer-column=0A=
+	{display:block!important}=0A=
+.footer-mobile-stack=0A=
+	{display:block!important}=0A=
+.footer-mobile-stack-padding=0A=
+	{padding-top:3px}=0A=
+=0A=
+	}=0A=
+@media only screen and (max-width:320px) {=0A=
+.layout=0A=
+	{padding:0px 0px 0px 0px!important}=0A=
+=0A=
+	}=0A=
+@media screen {=0A=
+@font-face=0A=
+	{font-family:'';=0A=
+	font-style:normal;=0A=
+	font-weight:400}=0A=
+=0A=
+	}=0A=
+-->=0A=
+</style>
+<table class=3D"template-body" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" width=3D"100%" style=3D"text-align:center; min-width:100%">
+<tbody>
+<tr>
+<td class=3D"preheader-container">
+<div>
+<div id=3D"preheader" style=3D"display:none; font-size:1px; color:transpare=
+nt; line-height:1px; max-height:0px; max-width:0px; opacity:0; overflow:hid=
+den">
+<span>Visit Our Website for More!</span> </div>
+<img src=3D"rooster://image?url=3Dhttp://r20.rs6.net/on.jsp?ca=3Dd342178b-b=
+6de-4096-9802-4c89bce88c06&amp;a=3D1130820803448&amp;c=3De79d28e6-bad3-11ea=
+-aa0b-782bcb740129&amp;ch=3De7a2d746-bad3-11ea-aa0b-782bcb740129" alt=3D"">
+</div>
+</td>
+</tr>
+<tr>
+<td class=3D"template-shell-container" align=3D"center">
+<div class=3D"bgcolor" style=3D"background-color:#FFFFFF">
+<table class=3D"bgimage" width=3D"100%" border=3D"0" cellpadding=3D"0" cell=
+spacing=3D"0" background=3D"https://imgssl.constantcontact.com/letters/imag=
+es/backgrounds/dotgrid.png" style=3D"background:url('https://imgssl.constan=
+tcontact.com/letters/images/backgrounds/dotgrid.png') repeat top left">
+<tbody>
+<tr>
+<td align=3D"center">
+<table class=3D"main-width" width=3D"630" align=3D"center" border=3D"0" cel=
+lpadding=3D"0" cellspacing=3D"0" style=3D"width:630px">
+<tbody>
+<tr>
+<td class=3D"layout" align=3D"center" valign=3D"top" style=3D"padding:15px =
+5px">
+<table width=3D"100%" align=3D"center" border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0">
+<tbody>
+<tr>
+<td class=3D"layout-container-border" align=3D"center" valign=3D"top" bgcol=
+or=3D"#FF002A" style=3D"background-color:#FF002A; padding:10px">
+<table width=3D"100%" align=3D"center" border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" bgcolor=3D"#FF002A" style=3D"background-color:#FF002A">
+<tbody>
+<tr>
+<td class=3D"layout-container" align=3D"center" valign=3D"top" bgcolor=3D"#=
+ffffff" style=3D"background-color:#ffffff; padding:0">
+<div class=3D"">
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" clas=
+s=3D"galileo-ap-layout-editor" style=3D"min-width:100%">
+<tbody>
+<tr>
+<td class=3D" editor-col OneColumnMobile" width=3D"100%" align=3D"" valign=
+=3D"top">
+<div class=3D"gl-contains-spacer">
+<table class=3D"editor-spacer" width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0">
+<tbody>
+<tr>
+<td class=3D"" align=3D"center" valign=3D"top">
+<table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" width=3D"100%">
+<tbody>
+<tr>
+<td class=3D"spacer-base" width=3D"100%" align=3D"center" valign=3D"top" st=
+yle=3D"padding-bottom:10px; height:1px; line-height:1px">
+<div><img alt=3D"" width=3D"5" height=3D"1" border=3D"0" hspace=3D"0" vspac=
+e=3D"0" src=3D"https://imgssl.constantcontact.com/letters/images/1101116784=
+221/S.gif" style=3D"display:block; height:1px; width:5px"></div>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" clas=
+s=3D"galileo-ap-layout-editor" style=3D"min-width:100%">
+<tbody>
+<tr>
+<td class=3D" editor-col OneColumnMobile" width=3D"100%" align=3D"" valign=
+=3D"top">
+<div class=3D"gl-contains-image">
+<table class=3D"editor-image editor-image" width=3D"100%" cellpadding=3D"0"=
+ cellspacing=3D"0" border=3D"0" style=3D"min-width:100%">
+<tbody>
+<tr>
+<td align=3D"center" valign=3D"top" style=3D"padding-top:0px; padding-botto=
+m:0px">
+<div class=3D"publish-container"><a href=3D"https://eur03.safelinks.protect=
+ion.outlook.com/?url=3Dhttp%3A%2F%2Fr20.rs6.net%2Ftn.jsp%3Ff%3D001WaDmQgqZJ=
+0oh-o6tTzFFe3ie2oYs7nY2bmBCt1mKZRbVCqAd2U8sfUswjGq3XhKVR3w2qRdh1ItSFSnSY0Ah=
+GpN2OQi2t5kRfk0mD8XKiNEwkJR3fMNINauqeDqDF90sOX3mNZwnpR8J8MNiZAvU1FoBl6DUBRi=
+vHaxzMij1jsoFqZwLylAbbTcuCzteVBgfW8w6JMmOvRw%3D%26c%3D97IMDX9NmHOHR0SA-pKsA=
+iK05__lEnJzD7CK4vHc517SRWYBtq6nxA%3D%3D%26ch%3D3Xb8cvGswX2bYiKoBUQKGw1x3Epf=
+EwahDL2L_8mlfVkoElcPHVF1KA%3D%3D&amp;data=3D02%7C01%7C%7Cc3a879a3d2394bc1f1=
+e108d832e5a275%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C637315309132652=
+502&amp;sdata=3DeefQlCKkgkjDWHS1c606Jcq3Loh3xjV4WycBoYWPjoo%3D&amp;reserved=
+=3D0" originalsrc=3D"http://r20.rs6.net/tn.jsp?f=3D001WaDmQgqZJ0oh-o6tTzFFe=
+3ie2oYs7nY2bmBCt1mKZRbVCqAd2U8sfUswjGq3XhKVR3w2qRdh1ItSFSnSY0AhGpN2OQi2t5kR=
+fk0mD8XKiNEwkJR3fMNINauqeDqDF90sOX3mNZwnpR8J8MNiZAvU1FoBl6DUBRivHaxzMij1jso=
+FqZwLylAbbTcuCzteVBgfW8w6JMmOvRw=3D&amp;c=3D97IMDX9NmHOHR0SA-pKsAiK05__lEnJ=
+zD7CK4vHc517SRWYBtq6nxA=3D=3D&amp;ch=3D3Xb8cvGswX2bYiKoBUQKGw1x3EpfEwahDL2L=
+_8mlfVkoElcPHVF1KA=3D=3D" shash=3D"UsEJE/bNCfcnZlh7ssw60SNwVeq9Up6Artf5mCXt=
+3b8lTJ0R5HP1fhCBIqqZnjCtpWkMBvbMYDCdEon8My3lCO+cyr9XoPnT7+CoUGRzz/lPKdPI+MA=
+g6/ELJVM8U8b49AJmLJxNqsx1PLd87qJdiRnOt1BOkP4egM6fZIC+XcQ=3D"><img alt=3D"" =
+class=3D"" width=3D"600" border=3D"0" hspace=3D"0" vspace=3D"0" src=3D"http=
+s://files.constantcontact.com/87b1c2a4701/9dd391f2-3df7-4d8f-98a4-5d426d21f=
+099.png" style=3D"display:block; height:auto!important; max-width:100%!impo=
+rtant">
+</a></div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" clas=
+s=3D"galileo-ap-layout-editor" style=3D"min-width:100%">
+<tbody>
+<tr>
+<td class=3D" editor-col OneColumnMobile" width=3D"100%" align=3D"" valign=
+=3D"top">
+<div class=3D"gl-contains-spacer">
+<table class=3D"editor-spacer" width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0">
+<tbody>
+<tr>
+<td class=3D"" align=3D"center" valign=3D"top">
+<table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" width=3D"100%">
+<tbody>
+<tr>
+<td class=3D"spacer-base" width=3D"100%" align=3D"center" valign=3D"top" st=
+yle=3D"padding-bottom:10px; height:1px; line-height:1px">
+<div><img alt=3D"" width=3D"5" height=3D"1" border=3D"0" hspace=3D"0" vspac=
+e=3D"0" src=3D"https://imgssl.constantcontact.com/letters/images/1101116784=
+221/S.gif" style=3D"display:block; height:1px; width:5px"></div>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" clas=
+s=3D"galileo-ap-layout-editor" style=3D"min-width:100%">
+<tbody>
+<tr>
+<td class=3D"feature editor-col OneColumnMobile" width=3D"45%" align=3D"lef=
+t" valign=3D"top" bgcolor=3D"#d9d9d9" style=3D"background-color:#d9d9d9">
+<div>
+<div class=3D"column-resize-bar"><span class=3D"line"></span><span class=3D=
+"grabber"></span></div>
+</div>
+<div class=3D"gl-contains-image">
+<table class=3D"editor-image content-image editor-image-hspace-on" width=3D=
+"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"min-width:=
+100%">
+<tbody>
+<tr>
+<td align=3D"left" valign=3D"top" style=3D"padding:0px 10px 0px 20px">
+<div class=3D"publish-container"><a href=3D"https://eur03.safelinks.protect=
+ion.outlook.com/?url=3Dhttp%3A%2F%2Fr20.rs6.net%2Ftn.jsp%3Ff%3D001WaDmQgqZJ=
+0oh-o6tTzFFe3ie2oYs7nY2bmBCt1mKZRbVCqAd2U8sfaRVySicTjCOcWmbOuCkWmx2DXDojI9c=
+q0Td9PQhUOowBeLsdeZJUc5u6_cPfsR2oojQt5w6LEPosRq0edleK4gN4klV_rTG_702BNBoNmB=
+vPAeLq2YLvRuFbj_C6ApTuktbJvmT4CWK_EudA8Lk8tc%3D%26c%3D97IMDX9NmHOHR0SA-pKsA=
+iK05__lEnJzD7CK4vHc517SRWYBtq6nxA%3D%3D%26ch%3D3Xb8cvGswX2bYiKoBUQKGw1x3Epf=
+EwahDL2L_8mlfVkoElcPHVF1KA%3D%3D&amp;data=3D02%7C01%7C%7Cc3a879a3d2394bc1f1=
+e108d832e5a275%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C637315309132667=
+475&amp;sdata=3D3JRXDmHpUjNtcKEi27%2Bwoivlba0pwLgtVaiqsJ7Pu2c%3D&amp;reserv=
+ed=3D0" originalsrc=3D"http://r20.rs6.net/tn.jsp?f=3D001WaDmQgqZJ0oh-o6tTzF=
+Fe3ie2oYs7nY2bmBCt1mKZRbVCqAd2U8sfaRVySicTjCOcWmbOuCkWmx2DXDojI9cq0Td9PQhUO=
+owBeLsdeZJUc5u6_cPfsR2oojQt5w6LEPosRq0edleK4gN4klV_rTG_702BNBoNmBvPAeLq2YLv=
+RuFbj_C6ApTuktbJvmT4CWK_EudA8Lk8tc=3D&amp;c=3D97IMDX9NmHOHR0SA-pKsAiK05__lE=
+nJzD7CK4vHc517SRWYBtq6nxA=3D=3D&amp;ch=3D3Xb8cvGswX2bYiKoBUQKGw1x3EpfEwahDL=
+2L_8mlfVkoElcPHVF1KA=3D=3D" shash=3D"K2UEmbCuIUM59BLG5PkfTCR80v1a+12mwVE2rM=
+66+mBh8fgB7wQqBpIBjMrlvU0PjxjUyVGxRdTZ6ASEXlSLE/LBDe9osd8r6JD7Rkrxw2j6IbyoT=
+kH/peV2bceojcfMw1fuPmlDage3ic9RAwd697S550Etya/Z8hndxYidp2s=3D"><img alt=3D"=
+" class=3D"" width=3D"240" border=3D"0" hspace=3D"0" vspace=3D"0" src=3D"ht=
+tps://files.constantcontact.com/87b1c2a4701/f10d9a7e-7578-40ef-a405-a458c22=
+a5678.png" style=3D"display:block; height:auto; max-width:100%">
+</a></div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class=3D"gl-contains-text">
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"min-width:100%">
+<tbody>
+<tr>
+<td class=3D"editor-text " align=3D"left" valign=3D"top" style=3D"font-fami=
+ly:Arial,Verdana,Helvetica,sans-serif; font-size:12px; color:#403F42; text-=
+align:left; display:block; word-wrap:break-word; line-height:1.2; padding:1=
+0px 10px 10px 20px">
+<div></div>
+<div class=3D"text-container galileo-ap-content-editor">
+<div>
+<div align=3D"center" style=3D"text-align:center"><span style=3D"font-style=
+:italic; font-weight:bold">Imported by Dynamic International</span></div>
+</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+<td class=3D"feature editor-col OneColumnMobile" width=3D"55%" align=3D"lef=
+t" valign=3D"top" bgcolor=3D"#d9d9d9" style=3D"background-color:#d9d9d9">
+<div class=3D"gl-contains-text">
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"min-width:100%">
+<tbody>
+<tr>
+<td class=3D"editor-text feature-heading-text" align=3D"left" valign=3D"top=
+" style=3D"font-family:Arial,Verdana,Helvetica,sans-serif; font-size:16px; =
+color:#717a80; text-align:left; display:block; word-wrap:break-word; line-h=
+eight:1.2; font-weight:bold; padding:10px 20px 10px 10px">
+<div></div>
+<div class=3D"text-container galileo-ap-content-editor">
+<div>
+<div align=3D"center" style=3D"text-align:center"><span style=3D"font-size:=
+14px; color:rgb(10,10,10)">For more information, contact us today!</span></=
+div>
+</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class=3D"gl-contains-text">
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"min-width:100%">
+<tbody>
+<tr>
+<td class=3D"editor-text feature-text" align=3D"left" valign=3D"top" style=
+=3D"font-family:Arial,Verdana,Helvetica,sans-serif; font-size:12px; color:#=
+403F42; text-align:left; display:block; word-wrap:break-word; line-height:1=
+.2; padding:10px 20px 10px 10px">
+<div></div>
+<div class=3D"text-container galileo-ap-content-editor">
+<div>
+<div><span style=3D"font-size:14px; color:rgb(10,10,10); font-weight:bold">=
+Phone</span><span style=3D"font-size:14px; color:rgb(10,10,10)">: (855) 976=
+-4446</span>
+</div>
+<div><span style=3D"font-size:14px; color:rgb(10,10,10); font-weight:bold">=
+Email:</span><span style=3D"font-size:14px; color:rgb(10,10,10)">
+</span><span style=3D"font-size:14px; color:rgb(10,10,10); text-decoration:=
+underline">marketing@dynamicintl</span><span style=3D"font-size:14px; text-=
+decoration:underline">.com</span>
+</div>
+<div><span style=3D"font-size:14px; color:rgb(10,10,10); font-weight:bold">=
+Website</span><span style=3D"font-size:14px; color:rgb(10,10,10)">:
+</span><a href=3D"https://eur03.safelinks.protection.outlook.com/?url=3Dhtt=
+p%3A%2F%2Fr20.rs6.net%2Ftn.jsp%3Ff%3D001WaDmQgqZJ0oh-o6tTzFFe3ie2oYs7nY2bmB=
+Ct1mKZRbVCqAd2U8sfZK0fHjOoNDQ-GKsWoMa4PdWwLueCjbqDGlbEBq4UM_hqu8C5cE8vZq2Xb=
+o1S8wUxzSF_XviKd7HHTGHi7PMN80l5j0LNHP6Ubpk6Vr4awl_%26c%3D97IMDX9NmHOHR0SA-p=
+KsAiK05__lEnJzD7CK4vHc517SRWYBtq6nxA%3D%3D%26ch%3D3Xb8cvGswX2bYiKoBUQKGw1x3=
+EpfEwahDL2L_8mlfVkoElcPHVF1KA%3D%3D&amp;data=3D02%7C01%7C%7Cc3a879a3d2394bc=
+1f1e108d832e5a275%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C637315309132=
+677455&amp;sdata=3DxwhqEgFHMfnY%2FYgTeJeQluwdvLIm1pXwJZa1%2BidjpH4%3D&amp;r=
+eserved=3D0" originalsrc=3D"http://r20.rs6.net/tn.jsp?f=3D001WaDmQgqZJ0oh-o=
+6tTzFFe3ie2oYs7nY2bmBCt1mKZRbVCqAd2U8sfZK0fHjOoNDQ-GKsWoMa4PdWwLueCjbqDGlbE=
+Bq4UM_hqu8C5cE8vZq2Xbo1S8wUxzSF_XviKd7HHTGHi7PMN80l5j0LNHP6Ubpk6Vr4awl_&amp=
+;c=3D97IMDX9NmHOHR0SA-pKsAiK05__lEnJzD7CK4vHc517SRWYBtq6nxA=3D=3D&amp;ch=3D=
+3Xb8cvGswX2bYiKoBUQKGw1x3EpfEwahDL2L_8mlfVkoElcPHVF1KA=3D=3D" shash=3D"Kb7a=
+SBBcCm7WmVeeFWY+AoEum32EAk/MqPz+hSwq+c24FDR1ky6Rq5wdu4d/6KCFAdMbdvvlo5sIK+h=
+36ufdvWI+7f9QFYKESFQ5qmO7tvp3sSot18ZNKG6E3s4jAgp/aE210jAlsbbzyBxneBuj07zg+w=
+oVGwwNlOrfp2q2tFE=3D" rel=3D"noopener noreferrer" target=3D"_blank" style=
+=3D"font-size:14px; color:rgb(10,10,10); font-weight:normal; font-style:nor=
+mal; text-decoration:underline">www.SmartMachineTool.com</a>
+</div>
+</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table class=3D"footer-container" width=3D"100%" cellpadding=3D"0" cellspac=
+ing=3D"0" border=3D"0" bgcolor=3D"#ffffff" style=3D"background:#ffffff; mar=
+gin-left:auto; margin-right:auto; table-layout:auto!important">
+<tbody>
+<tr>
+<td width=3D"100%" align=3D"center" valign=3D"top" style=3D"width:100%">
+<div class=3D"footer-max-main-width" align=3D"center" style=3D"margin-left:=
+auto; margin-right:auto; max-width:100%">
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0">
+<tbody>
+<tr>
+<td class=3D"footer-layout" align=3D"center" valign=3D"top" style=3D"paddin=
+g:16px 0px">
+<table class=3D"footer-main-width" border=3D"0" cellpadding=3D"0" cellspaci=
+ng=3D"0" style=3D"width:580px">
+<tbody>
+<tr>
+<td class=3D"footer-text" align=3D"center" valign=3D"top" style=3D"color:#5=
+d5d5d; font-family:Verdana,Geneva,sans-serif; font-size:12px; padding:4px 0=
+px">
+<span class=3D"footer-column">Dynamic<span class=3D"footer-mobile-hidden"> =
+| </span></span><span class=3D"footer-column">N25 W23287 Paul Road<span cla=
+ss=3D"footer-mobile-hidden">,
+</span></span><span class=3D"footer-column"></span><span class=3D"footer-co=
+lumn"></span><span class=3D"footer-column">Pewaukee, WI 53072</span><span c=
+lass=3D"footer-column"></span>
+</td>
+</tr>
+<tr>
+<td class=3D"footer-row" align=3D"center" valign=3D"top" style=3D"padding:1=
+0px 0px">
+<table cellpadding=3D"0" cellspacing=3D"0" border=3D"0">
+<tbody>
+<tr>
+<td class=3D"footer-text" align=3D"center" valign=3D"top" style=3D"color:#5=
+d5d5d; font-family:Verdana,Geneva,sans-serif; font-size:12px; padding:4px 0=
+px">
+<a href=3D"https://eur03.safelinks.protection.outlook.com/?url=3Dhttps%3A%2=
+F%2Fvisitor.constantcontact.com%2Fdo%3Fp%3Dun%26m%3D001rhPfNrjF8AflgW_JC_uY=
+wA%253D%26ch%3De7a2d746-bad3-11ea-aa0b-782bcb740129%26ca%3Dd342178b-b6de-40=
+96-9802-4c89bce88c06&amp;data=3D02%7C01%7C%7Cc3a879a3d2394bc1f1e108d832e5a2=
+75%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C637315309132682445&amp;sdat=
+a=3Dch7ZNRUkhZLXOT0ACQ0XoQR%2F%2BTMb51ohcsPZ7tCu544%3D&amp;reserved=3D0" or=
+iginalsrc=3D"https://visitor.constantcontact.com/do?p=3Dun&amp;m=3D001rhPfN=
+rjF8AflgW_JC_uYwA%3D&amp;ch=3De7a2d746-bad3-11ea-aa0b-782bcb740129&amp;ca=
+=3Dd342178b-b6de-4096-9802-4c89bce88c06" shash=3D"XZhn6kgiFUYZdkPTZQEKIIvfQ=
+rBY43mJ+Llw5ZoDkMiaCOwHHaHc+GesCwA+qvYn3vcXy/r9EZcgzoh/VDKtFp2h0RyCePjj5GZj=
+YGNIwOCUhGbeloztFoyzYOvAA0nWBbySIAdi4GN8zc4IyhLcK1NUEgnXuH/o8460MF6YVZQ=3D"=
+ style=3D"color:#5d5d5d">Unsubscribe
+ dat919@hotmail.com</a> </td>
+</tr>
+<tr>
+<td class=3D"footer-text" align=3D"center" valign=3D"top" style=3D"color:#5=
+d5d5d; font-family:Verdana,Geneva,sans-serif; font-size:12px; padding:4px 0=
+px">
+<a href=3D"https://eur03.safelinks.protection.outlook.com/?url=3Dhttps%3A%2=
+F%2Fvisitor.constantcontact.com%2Fdo%3Fp%3Doo%26m%3D001rhPfNrjF8AflgW_JC_uY=
+wA%253D%26ch%3De7a2d746-bad3-11ea-aa0b-782bcb740129%26ca%3Dd342178b-b6de-40=
+96-9802-4c89bce88c06&amp;data=3D02%7C01%7C%7Cc3a879a3d2394bc1f1e108d832e5a2=
+75%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C637315309132692429&amp;sdat=
+a=3DbYLWfFqPTC0x7sxkpQTawZu%2Fv3gUh5j4BwZmz3Rl6To%3D&amp;reserved=3D0" orig=
+inalsrc=3D"https://visitor.constantcontact.com/do?p=3Doo&amp;m=3D001rhPfNrj=
+F8AflgW_JC_uYwA%3D&amp;ch=3De7a2d746-bad3-11ea-aa0b-782bcb740129&amp;ca=3Dd=
+342178b-b6de-4096-9802-4c89bce88c06" shash=3D"ueoXQQbBwYc2Z/X3ZswPKPbuFaHX2=
+T3lUFhHCTEfeHc4PYdRf38vHaqpFew9sxPzBhEsL9EBpUr71Jev+65DpsbfrANc8cWYxcfGPX2C=
+NiGf/hEtOq4WCE3uJZ0msOVfXDNlZZiNSOy1JzbwnLu+dBnO1qp3OlOyz+XrDXL7KFM=3D" sty=
+le=3D"color:#5d5d5d">Update
+ Profile</a> | <a class=3D"footer-about-provider" href=3D"https://eur03.saf=
+elinks.protection.outlook.com/?url=3Dhttp%3A%2F%2Fwww.constantcontact.com%2=
+Flegal%2Fservice-provider%3Fcc%3Dabout-service-provider&amp;data=3D02%7C01%=
+7C%7Cc3a879a3d2394bc1f1e108d832e5a275%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C=
+1%7C0%7C637315309132702415&amp;sdata=3DiNzwQKV9osGFrhKgm46gxylO5CefvFPse9us=
+V0hNw98%3D&amp;reserved=3D0" originalsrc=3D"http://www.constantcontact.com/=
+legal/service-provider?cc=3Dabout-service-provider" shash=3D"MQPmq0Go9BJasn=
+jqyHQd7XLDqcR2xFV9bP7ohcgmstBg0k96NgYRRHex7Tqx92ggemtbXVpiZEG+5hLMdNC7KmTA3=
+KABIDLs1EemJbIyZTklQdf7M3y0mbIc0cAefsQ2NjmC5lMdJNRgY1MXZbnpKVvimimlHX1+Dtme=
+annoB5w=3D" style=3D"color:#5d5d5d">
+About our service provider</a> </td>
+</tr>
+<tr>
+<td class=3D"footer-text" align=3D"center" valign=3D"top" style=3D"color:#5=
+d5d5d; font-family:Verdana,Geneva,sans-serif; font-size:12px; padding:4px 0=
+px">
+Sent by <a href=3D"mailto:marketing@dynamicintl.com" style=3D"color:#5d5d5d=
+; text-decoration:none">
+marketing@dynamicintl.com</a> <span class=3D"footer-column">powered by</spa=
+n> </td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td class=3D"footer-text" align=3D"center" valign=3D"top" style=3D"color:#5=
+d5d5d; font-family:Verdana,Geneva,sans-serif; font-size:12px; padding:4px 0=
+px">
+<a href=3D"https://eur03.safelinks.protection.outlook.com/?url=3Dhttp%3A%2F=
+%2Fwww.constantcontact.com%2Findex.jsp%3Fcc%3Dnge%26rmc%3DVF19_3GE&amp;data=
+=3D02%7C01%7C%7Cc3a879a3d2394bc1f1e108d832e5a275%7C84df9e7fe9f640afb435aaaa=
+aaaaaaaa%7C1%7C0%7C637315309132712393&amp;sdata=3DDjSYlcsiyMeD2U7ZHx7lvUB%2=
+BsFMI3Z4Xprqw2Pibdfw%3D&amp;reserved=3D0" originalsrc=3D"http://www.constan=
+tcontact.com/index.jsp?cc=3Dnge&amp;rmc=3DVF19_3GE" shash=3D"DyjYi+/dYPGy5O=
+7rqWDeaZUXqh1oToaldiKOdwklb6t/pM4dlEwjAvGlYfVuIlXkAUz3gFIYiOPY2XZ59GKDZPuM6=
+A4IUzO/WQj72ycAJXjy9DNNju4JD784gzv+nYKJExJLSp8FrEEf80IQBIqTGxAtwFFeoB/fe6oW=
+x7n3icM=3D" style=3D"color:#5d5d5d; text-decoration:none"><img alt=3D"Trust=
+ed Email from Constant Contact - Try it FREE today." width=3D"160" border=
+=3D"0" hspace=3D"0" vspace=3D"0" src=3D"https://static.ctctcdn.com/letters/=
+images/CTCTFooter/Logo_Blue_Orange.png">
+</a>
+<div class=3D"footer-cta-text" style=3D"color:#5d5d5d; font-family:Verdana,=
+Geneva,sans-serif; font-size:9px; line-height:2">
+<a href=3D"https://eur03.safelinks.protection.outlook.com/?url=3Dhttp%3A%2F=
+%2Fwww.constantcontact.com%2Findex.jsp%3Fcc%3Dnge%26rmc%3DVF19_3GE&amp;data=
+=3D02%7C01%7C%7Cc3a879a3d2394bc1f1e108d832e5a275%7C84df9e7fe9f640afb435aaaa=
+aaaaaaaa%7C1%7C0%7C637315309132722377&amp;sdata=3D62dHQB6o7nOH8tCBmGQvcWBDI=
+gB4lhkr5FrZQ88IwZs%3D&amp;reserved=3D0" originalsrc=3D"http://www.constantc=
+ontact.com/index.jsp?cc=3Dnge&amp;rmc=3DVF19_3GE" shash=3D"CLBOtg3kdnj/Cc0y=
+BAvNvKVibhxD4eKUJsaEVe4ZiA2/RxWkziUDYgUYuCnfke5bk/mKcDEei8FWF78okAEM+WC6AYn=
+SCWJrd+L40FidhqObpzia0txYLNTQlwGlkuPAd4YM3DSr/yXkVUDu4Ufm9fm0Z+9v1FGValv8cH=
+h6AgA=3D" style=3D"color:#5d5d5d; text-decoration:none">Try
+ email marketing for free today!</a> </div>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+</div>
+</body>
+</html>
+
+--_000_BLAPR15MB374630938CBA9EB9B9DEBDAFEB730BLAPR15MB3746namp_--
